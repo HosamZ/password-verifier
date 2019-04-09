@@ -5,20 +5,18 @@ import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-class CheckerTest {
-    private LengthVerifier checker = new LengthVerifier();
-
+class LowercaseVerifierTest {
     @ParameterizedTest
     @CsvSource({
             "hosaM123,true",
-            "sssssss,false",
-            "hossam123,true",
-            "null,false",
             "HOSAMm123,true",
-            "ssS12,false"
+            "HHHHHHHHH,false",
+            "12345678,false"
     })
-    void checkPasswordLength(String password, boolean expected) {
-        boolean actual = checker.verify(password);
+    void checkOneLowercase(String password, boolean expected) {
+        LowercaseVerifier verifier = new LowercaseVerifier();
+
+        boolean actual = verifier.verify(password);
 
         assertEquals(expected, actual);
     }

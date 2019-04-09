@@ -5,20 +5,18 @@ import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-class CheckerTest {
-    private LengthVerifier checker = new LengthVerifier();
-
+class LengthVerifierTest {
     @ParameterizedTest
     @CsvSource({
             "hosaM123,true",
             "sssssss,false",
-            "hossam123,true",
-            "null,false",
-            "HOSAMm123,true",
-            "ssS12,false"
+            "qs,false",
+            "1234567,false"
     })
     void checkPasswordLength(String password, boolean expected) {
-        boolean actual = checker.verify(password);
+        LengthVerifier verifier = new LengthVerifier();
+
+        boolean actual = verifier.verify(password);
 
         assertEquals(expected, actual);
     }

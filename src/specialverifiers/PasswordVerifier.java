@@ -2,8 +2,9 @@ package specialverifiers;
 
 import verifiers.*;
 
-import java.util.Arrays;
 import java.util.List;
+
+import static java.util.Arrays.asList;
 
 public class PasswordVerifier {
 
@@ -20,7 +21,7 @@ public class PasswordVerifier {
     }
 
     private List<Verifier> getVerifiers() {
-        return Arrays.asList(new LowercaseVerifier(), new LengthVerifier()
+        return asList(new LowercaseVerifier(), new LengthVerifier()
                 , new NotNullVerifier(), new OneDigitCaseVerifier(), new UppercaseVerifier()
         );
     }
