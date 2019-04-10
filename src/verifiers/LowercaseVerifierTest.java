@@ -10,7 +10,7 @@ class LowercaseVerifierTest {
     @CsvSource({
             "hosaM123,true",
             "HOSAMm123,true",
-            "HHHHHHHHH,false",
+            "HHHHHHHHH121,false",
             "12345678,false"
     })
     void checkOneLowercase(String password, boolean expected) {
